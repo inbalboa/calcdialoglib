@@ -1,0 +1,32 @@
+name: Publish
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        
+      - name: Get tag message
+        run: git fetch --depth=1 origin +refs/tags/*:refs/tags/* && git tag -l --format='%(contents)' ${{ github.ref_name }} > TAG_MESSAGE.md
+        
+      - name: Create release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: ${{ github.ref }}
+          body_path: TAG_MESSAGE.md
+          draft: false
+          prerelease: false
+

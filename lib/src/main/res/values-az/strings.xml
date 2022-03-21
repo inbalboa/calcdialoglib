@@ -1,0 +1,18 @@
+<resources>
+
+    <string name="calc_dialog_clear">Təmiz</string>
+    <string name="calc_dialog_cancel">Ləğv et</string>
+    <string name="calc_dialog_ok">Tamam</string>
+
+    <string name="calc_answer">Cavab</string>
+
+    <string-array name="calc_dialog_errors">
+        <item>Sıfıra bölmə</item>
+        <item>Həddindən artıq</item>
+        <item>Nəticə müsbət olmalıdır</item>
+        <item>Nəticə mənfi olmalıdır</item>
+    </string-array>
+
+    <string name="calc_dialog_erase">Sil</string>
+
+</resources>

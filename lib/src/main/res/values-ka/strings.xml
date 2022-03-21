@@ -1,0 +1,18 @@
+<resources>
+
+    <string name="calc_dialog_clear">წმინდა</string>
+    <string name="calc_dialog_cancel">გაუქმება</string>
+    <string name="calc_dialog_ok">კარგი</string>
+
+    <string name="calc_answer">პასუხი</string>
+
+    <string-array name="calc_dialog_errors">
+        <item>გაყოფა ნულზე</item>
+        <item>საზღვრებს გარეთ</item>
+        <item>შედეგი დადებითი უნდა იყოს</item>
+        <item>შედეგი უნდა იყოს უარყოფითი</item>
+    </string-array>
+
+    <string name="calc_dialog_erase">წაშლა</string>
+
+</resources>
