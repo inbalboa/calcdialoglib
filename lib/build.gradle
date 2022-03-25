@@ -6,10 +6,10 @@ plugins {
 android {
     compileSdk 32
     defaultConfig {
-        minSdkVersion 21
+        minSdkVersion 22
         targetSdk 32
         versionCode 1
-        versionName '1.0.0'
+        versionName '1.0.1'
     }
 
     compileOptions {
@@ -37,7 +37,7 @@ afterEvaluate {
                 from components.release
                 groupId = 'com.github.inbalboa'
                 artifactId = 'calcdialog'
-                version = '1.0'
+                version = '1.0.1'
             }
         }
     }
