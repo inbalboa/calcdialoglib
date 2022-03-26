@@ -1,3 +1,6 @@
+# v1.0.2
+* Cancel button can be hidden
+
 # v1.0.1
 * Bump minSdkVersion to 22
 

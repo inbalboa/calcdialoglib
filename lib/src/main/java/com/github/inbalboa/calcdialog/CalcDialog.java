@@ -291,6 +291,10 @@ public class CalcDialog extends AppCompatDialogFragment {
         binding.calcBtnSign.setVisibility(visible ? View.VISIBLE : View.INVISIBLE);
     }
 
+    public void setCancelBtnVisible(boolean visible) {
+        binding.calcBtnCancel.setVisibility(visible ? View.VISIBLE : View.INVISIBLE);
+    }
+
     void setDecimalSepBtnEnabled(boolean enabled) {
         binding.calcBtnDecimal.setEnabled(enabled);
     }

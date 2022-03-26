@@ -47,6 +47,7 @@ public class CalcSettings implements Parcelable {
     boolean isZeroShownWhenNoValue = true;
     boolean isAnswerBtnShown = false;
     boolean isSignBtnShown = true;
+    boolean isCancelBtnShown = false;
     boolean isExpressionEditable = false;
     boolean shouldEvaluateOnOperation = false;
 
@@ -206,6 +207,20 @@ public class CalcSettings implements Parcelable {
     }
 
     /**
+     * Set whether the cancel button should be shown. By default it is shown.
+     * @param shown Whether to show it or not.
+     * @return The settings
+     */
+    public CalcSettings setCancelBtnShown(boolean shown) {
+        isCancelBtnShown = shown;
+        return this;
+    }
+
+    public boolean isCancelBtnShown() {
+        return isCancelBtnShown;
+    }
+
+    /**
      * Set whether to evaluate the expression when an operation button is pressed (+, -, * and /).
      * If not, the display will show zero or no value if {@link #isZeroShownWhenNoValue} is true.
      * By default, the expression is evaluated.
@@ -300,6 +315,7 @@ public class CalcSettings implements Parcelable {
             isZeroShownWhenNoValue = bundle.getBoolean("isZeroShownWhenNoValue");
             isAnswerBtnShown = bundle.getBoolean("isAnswerBtnShown");
             isSignBtnShown = bundle.getBoolean("isSignBtnShown");
+            isCancelBtnShown = bundle.getBoolean("isCancelBtnShown");
             shouldEvaluateOnOperation = bundle.getBoolean("shouldEvaluateOnOperation");
 
             if (bundle.containsKey("initialValue")) {
@@ -325,6 +341,7 @@ public class CalcSettings implements Parcelable {
         bundle.putBoolean("isZeroShownWhenNoValue", isZeroShownWhenNoValue);
         bundle.putBoolean("isAnswerBtnShown", isAnswerBtnShown);
         bundle.putBoolean("isSignBtnShown", isSignBtnShown);
+        bundle.putBoolean("isCancelBtnShown", isCancelBtnShown);
         bundle.putBoolean("shouldEvaluateOnOperation", shouldEvaluateOnOperation);
         bundle.putBoolean("isOrderOfOperationsApplied", isOrderOfOperationsApplied);
 

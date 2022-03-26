@@ -102,6 +102,7 @@ class CalcPresenter {
         view.setDecimalSepBtnEnabled(nbFormat.getMaximumFractionDigits() > 0);
         view.setAnswerBtnVisible(settings.isAnswerBtnShown && resultValue != null);
         view.setSignBtnVisible(settings.isSignBtnShown);
+        view.setCancelBtnVisible(settings.isCancelBtnShown);
 
         updateCurrentValue();
         updateExpression();
