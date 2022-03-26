@@ -1,3 +1,6 @@
+# v1.0.4
+* Adjust hardware keyboard action handling behavior
+
 # v1.0.3
 * Handle hardware keyboard actions
 
