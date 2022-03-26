@@ -16,6 +16,8 @@
 
 package com.github.inbalboa.calcdialog;
 
+import static android.view.KeyEvent.ACTION_UP;
+
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -25,6 +27,7 @@ import android.graphics.Rect;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.ContextThemeWrapper;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,9 +39,9 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
 import androidx.appcompat.content.res.AppCompatResources;
 
-import java.math.BigDecimal;
-
 import com.github.inbalboa.calcdialog.databinding.DialogCalcBinding;
+
+import java.math.BigDecimal;
 
 /**
  * Dialog with calculator for entering and calculating a number.
@@ -184,6 +187,91 @@ public class CalcDialog extends AppCompatDialogFragment {
             // Presenter
             presenter = new CalcPresenter();
             presenter.attach(CalcDialog.this, state);
+        });
+        dialog.setOnKeyListener((dialogInterface, i, keyEvent) -> {
+            if (keyEvent == null || keyEvent.getAction() != ACTION_UP) {
+                return false;
+            }
+
+            int keyCode = keyEvent.getKeyCode();
+            switch (keyCode) {
+                case KeyEvent.KEYCODE_NUMPAD_ENTER:
+                case KeyEvent.KEYCODE_ENTER:
+                    binding.calcBtnOk.performClick();
+                    return true;
+                case KeyEvent.KEYCODE_DEL:
+                    binding.calcBtnErase.performClick();
+                    return true;
+                case KeyEvent.KEYCODE_ESCAPE:
+                    binding.calcBtnClear.performClick();
+                    return true;
+                case KeyEvent.KEYCODE_NUMPAD_ADD:
+                case KeyEvent.KEYCODE_PLUS:
+                    binding.calcBtnAdd.performClick();
+                    return true;
+                case KeyEvent.KEYCODE_NUMPAD_SUBTRACT:
+                case KeyEvent.KEYCODE_MINUS:
+                    binding.calcBtnSub.performClick();
+                    return true;
+                case KeyEvent.KEYCODE_NUMPAD_MULTIPLY:
+                case KeyEvent.KEYCODE_N:
+                    binding.calcBtnMul.performClick();
+                    return true;
+                case KeyEvent.KEYCODE_NUMPAD_DIVIDE:
+                case KeyEvent.KEYCODE_SLASH:
+                    binding.calcBtnDiv.performClick();
+                    return true;
+                case KeyEvent.KEYCODE_NUMPAD_EQUALS:
+                case KeyEvent.KEYCODE_EQUALS:
+                    binding.calcBtnEqual.performClick();
+                    return true;
+                case KeyEvent.KEYCODE_NUMPAD_DOT:
+                case KeyEvent.KEYCODE_PERIOD:
+                    binding.calcBtnDecimal.performClick();
+                    return true;
+                case KeyEvent.KEYCODE_NUMPAD_0:
+                case KeyEvent.KEYCODE_0:
+                    binding.calcBtn24.performClick();
+                    return true;
+                case KeyEvent.KEYCODE_NUMPAD_1:
+                case KeyEvent.KEYCODE_1:
+                    binding.calcBtn13.performClick();
+                    return true;
+                case KeyEvent.KEYCODE_NUMPAD_2:
+                case KeyEvent.KEYCODE_2:
+                    binding.calcBtn23.performClick();
+                    return true;
+                case KeyEvent.KEYCODE_NUMPAD_3:
+                case KeyEvent.KEYCODE_3:
+                    binding.calcBtn33.performClick();
+                    return true;
+                case KeyEvent.KEYCODE_NUMPAD_4:
+                case KeyEvent.KEYCODE_4:
+                    binding.calcBtn12.performClick();
+                    return true;
+                case KeyEvent.KEYCODE_NUMPAD_5:
+                case KeyEvent.KEYCODE_5:
+                    binding.calcBtn22.performClick();
+                    return true;
+                case KeyEvent.KEYCODE_NUMPAD_6:
+                case KeyEvent.KEYCODE_6:
+                    binding.calcBtn32.performClick();
+                    return true;
+                case KeyEvent.KEYCODE_NUMPAD_7:
+                case KeyEvent.KEYCODE_7:
+                    binding.calcBtn11.performClick();
+                    return true;
+                case KeyEvent.KEYCODE_NUMPAD_8:
+                case KeyEvent.KEYCODE_8:
+                    binding.calcBtn21.performClick();
+                    return true;
+                case KeyEvent.KEYCODE_NUMPAD_9:
+                case KeyEvent.KEYCODE_9:
+                    binding.calcBtn31.performClick();
+                    return true;
+            }
+
+            return false;
         });
 
         if (state != null) {

@@ -1,3 +1,6 @@
+# v1.0.3
+* Handle hardware keyboard actions
+
 # v1.0.2
 * Cancel button can be hidden
 
