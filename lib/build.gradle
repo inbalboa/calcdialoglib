@@ -3,13 +3,53 @@ plugins {
     id 'maven-publish'
 }
 
+def getVersionName() {
+    'v' + LIB_VERSION
+}
+
+def getVersionCode() {
+    def result = 0
+    def parts = LIB_VERSION.split('.').reverse()
+    for (int i = 0; i < parts.size(); i++) {
+        result += Integer.parseInt(part) * pow(100, i)
+    }
+
+    result
+}
+
+def getBody(String tag) {
+    def changelog = file("../CHANGELOG.md")
+
+    def lines = changelog.readLines()
+    def versionChanges = new StringBuilder()
+    def foundVersion = false
+    for (line in lines) {
+        if (foundVersion && line ==~ /^#+\s*.+$/) {
+            break
+        } else if (line ==~ /^#+\s*$tag$/) {
+            foundVersion = true
+        } else if (foundVersion) {
+            versionChanges.append(line)
+            versionChanges.append(System.getProperty("line.separator"))
+        }
+    }
+    if (!foundVersion) {
+        throw new GradleException("No release notes for version $tag")
+    }
+
+    return versionChanges.toString().trim()
+}
+
 android {
+    def code = getVersionCode()
+    def name = getVersionName()
+
     compileSdk 32
     defaultConfig {
         minSdkVersion 22
         targetSdk 32
-        versionCode 1
-        versionName '1.0.1'
+        versionCode code
+        versionName name
     }
 
     compileOptions {
@@ -37,52 +77,14 @@ afterEvaluate {
                 from components.release
                 groupId = 'com.github.inbalboa'
                 artifactId = 'calcdialog'
-                version = '1.0.1'
+                version = name
             }
         }
     }
 }
 
-def getTag() {
-    def changelog = file("../CHANGELOG.md")
-    def lines = changelog.readLines()
-
-    def match
-    for (line in lines) {
-        match = line =~ /^#+\s*v(.+)$/
-        if (match.find()) {
-            return match.group(1)
-        }
-    }
-
-    throw new GradleException("No release tag found in CHANGELOG.md")
-}
-
-def getBody(String tag) {
-    def changelog = file("../CHANGELOG.md")
-
-    def lines = changelog.readLines()
-    def versionChanges = new StringBuilder()
-    def foundVersion = false
-    for (line in lines) {
-        if (foundVersion && line ==~ /^#+\s*v.+$/) {
-            break
-        } else if (line ==~ /^#+\s*v$tag$/) {
-            foundVersion = true
-        } else if (foundVersion) {
-            versionChanges.append(line)
-            versionChanges.append(System.getProperty("line.separator"))
-        }
-    }
-    if (!foundVersion) {
-        throw new GradleException("No release notes for version $tag")
-    }
-
-    return versionChanges.toString().trim()
-}
-
 task release {
-    def tag = getTag()
+    def tag = getVersionName()
     def body = getBody(tag)
     doLast {
         exec {
