@@ -1,7 +1,9 @@
 # Calculator dialog
-[![](https://img.shields.io/jitpack/v/github/inbalboa/calcdialoglib)](https://jitpack.io/#inbalboa/calcdialoglib)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![API](https://img.shields.io/badge/API-22%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=22) 
+[![Jitpack](https://img.shields.io/jitpack/v/github/inbalboa/calcdialoglib)](https://jitpack.io/#inbalboa/calcdialoglib)
 
-A fully customizable calculator dialog for Android compatible with API 22.
+A fully customizable calculator dialog for Android.
 Can be used to replace the numeric keyboard and useful to enter monetary amounts for example.
 
 Is the fork of the [calcdialoglib by maltaisn](https://github.com/maltaisn/calcdialoglib).
