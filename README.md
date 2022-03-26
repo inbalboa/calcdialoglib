@@ -51,5 +51,5 @@ Replace `vX.Y.Z` with this version number: [![Jitpack][download-badge]][download
 ## Changelog
 View [changelog](CHANGELOG.md) for release notes.
 
-[download-badge]: https://img.shields.io/jitpack/v/github/inbalboa/calcdialoglib
+[download-badge]: https://jitpack.io/v/inbalboa/calcdialoglib.svg
 [download-link]: https://jitpack.io/#inbalboa/calcdialoglib
