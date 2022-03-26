@@ -213,57 +213,49 @@ public class CalcDialog extends AppCompatDialogFragment {
                 }
             }
 
-            MotionEvent motionEvent = MotionEvent.obtain(
-                    SystemClock.uptimeMillis(),
-                    SystemClock.uptimeMillis() + 100,
-                    MotionEvent.ACTION_UP,
-                    0f,
-                    0f,
-                    0
-            );
             if (keyEvent.getAction() == ACTION_UP) {
                 switch (keyCode) {
                     case KeyEvent.KEYCODE_NUMPAD_ENTER:
                     case KeyEvent.KEYCODE_ENTER:
-                        binding.calcBtnOk.dispatchTouchEvent(motionEvent);
+                        binding.calcBtnOk.performClick();
                         return true;
                     case KeyEvent.KEYCODE_DEL:
-                        binding.calcBtnErase.dispatchTouchEvent(motionEvent);
+                        binding.calcBtnErase.performClick();
                         return true;
                     case KeyEvent.KEYCODE_ESCAPE:
-                        binding.calcBtnClear.dispatchTouchEvent(motionEvent);
+                        binding.calcBtnClear.performClick();
                         return true;
                     case KeyEvent.KEYCODE_NUMPAD_ADD:
                     case KeyEvent.KEYCODE_PLUS:
-                        binding.calcBtnAdd.dispatchTouchEvent(motionEvent);
+                        binding.calcBtnAdd.performClick();
                         return true;
                     case KeyEvent.KEYCODE_NUMPAD_SUBTRACT:
                     case KeyEvent.KEYCODE_MINUS:
-                        binding.calcBtnSub.dispatchTouchEvent(motionEvent);
+                        binding.calcBtnSub.performClick();
                         return true;
                     case KeyEvent.KEYCODE_NUMPAD_MULTIPLY:
                     case KeyEvent.KEYCODE_N:
-                        binding.calcBtnMul.dispatchTouchEvent(motionEvent);
+                        binding.calcBtnMul.performClick();
                         return true;
                     case KeyEvent.KEYCODE_NUMPAD_DIVIDE:
                     case KeyEvent.KEYCODE_SLASH:
-                        binding.calcBtnDiv.dispatchTouchEvent(motionEvent);
+                        binding.calcBtnDiv.performClick();
                         return true;
                     case KeyEvent.KEYCODE_NUMPAD_EQUALS:
                     case KeyEvent.KEYCODE_EQUALS:
-                        binding.calcBtnEqual.dispatchTouchEvent(motionEvent);
+                        binding.calcBtnEqual.performClick();
                         return true;
                     case KeyEvent.KEYCODE_NUMPAD_DOT:
                     case KeyEvent.KEYCODE_PERIOD:
-                        binding.calcBtnDecimal.dispatchTouchEvent(motionEvent);
+                        binding.calcBtnDecimal.performClick();
                         return true;
                     case KeyEvent.KEYCODE_NUMPAD_0:
                     case KeyEvent.KEYCODE_0:
-                        binding.calcBtn24.dispatchTouchEvent(motionEvent);
+                        binding.calcBtn24.performClick();
                         return true;
                     case KeyEvent.KEYCODE_NUMPAD_1:
                     case KeyEvent.KEYCODE_1:
-                        binding.calcBtn13.dispatchTouchEvent(motionEvent);
+                        binding.calcBtn13.performClick();
                         return true;
                     case KeyEvent.KEYCODE_NUMPAD_2:
                     case KeyEvent.KEYCODE_2:
@@ -271,15 +263,15 @@ public class CalcDialog extends AppCompatDialogFragment {
                         return true;
                     case KeyEvent.KEYCODE_NUMPAD_3:
                     case KeyEvent.KEYCODE_3:
-                        binding.calcBtn33.dispatchTouchEvent(motionEvent);
+                        binding.calcBtn33.performClick();
                         return true;
                     case KeyEvent.KEYCODE_NUMPAD_4:
                     case KeyEvent.KEYCODE_4:
-                        binding.calcBtn12.dispatchTouchEvent(motionEvent);
+                        binding.calcBtn12.performClick();
                         return true;
                     case KeyEvent.KEYCODE_NUMPAD_5:
                     case KeyEvent.KEYCODE_5:
-                        binding.calcBtn22.dispatchTouchEvent(motionEvent);
+                        binding.calcBtn22.performClick();
                         return true;
                     case KeyEvent.KEYCODE_NUMPAD_6:
                     case KeyEvent.KEYCODE_6:
@@ -287,15 +279,15 @@ public class CalcDialog extends AppCompatDialogFragment {
                         return true;
                     case KeyEvent.KEYCODE_NUMPAD_7:
                     case KeyEvent.KEYCODE_7:
-                        binding.calcBtn11.dispatchTouchEvent(motionEvent);
+                        binding.calcBtn11.performClick();
                         return true;
                     case KeyEvent.KEYCODE_NUMPAD_8:
                     case KeyEvent.KEYCODE_8:
-                        binding.calcBtn21.dispatchTouchEvent(motionEvent);
+                        binding.calcBtn21.performClick();
                         return true;
                     case KeyEvent.KEYCODE_NUMPAD_9:
                     case KeyEvent.KEYCODE_9:
-                        binding.calcBtn31.dispatchTouchEvent(motionEvent);
+                        binding.calcBtn31.performClick();
                         return true;
                 }
             }
