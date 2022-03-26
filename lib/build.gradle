@@ -88,10 +88,10 @@ task release {
     def body = getBody(tag)
     doLast {
         exec {
-            commandLine 'git', 'tag', '-a', 'v' + tag, '-m', body
+            commandLine 'git', 'tag', '-a', tag, '-m', body
         }
         exec {
-            commandLine 'git', 'push', '--atomic', 'origin', 'main', 'v' + tag
+            commandLine 'git', 'push', '--atomic', 'origin', 'main', tag
         }
     }
 }
