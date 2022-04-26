@@ -1,3 +1,6 @@
+# v1.0.7
+* Downgrade SDK version to 19
+
 # v1.0.6
 * Fix hardware keyboard action handling errors
 

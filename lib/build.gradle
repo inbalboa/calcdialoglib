@@ -46,10 +46,11 @@ android {
 
     compileSdk 32
     defaultConfig {
-        minSdkVersion 22
+        minSdkVersion 19
         targetSdk 32
         versionCode code
         versionName name
+        multiDexEnabled true
     }
 
     compileOptions {
