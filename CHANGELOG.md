@@ -1,3 +1,6 @@
+# v1.1.4
+* Downgraded Java version to 17
+
 # v1.1.3
 * Added jitpack.yml
 
