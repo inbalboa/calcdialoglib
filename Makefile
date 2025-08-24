@@ -4,7 +4,7 @@ lint:
 
 pub:
 	@printf "==> publishing...\n"
-	@sh gradlew release
+	@sh gradlew tag release
 
 run: lint pub
 	@printf "\nPublished at %s\n\n" "`date`"

@@ -72,15 +72,13 @@ dependencies {
     testImplementation "junit:junit:4.13.2"
 }
 
-tasks.register('release') {
+tasks.register('tag', Exec) {
     def tag = getVersionName()
     def body = getBody(tag)
-    doLast {
-        exec {
-            commandLine 'git', 'tag', '-a', tag, '-m', body
-        }
-        exec {
-            commandLine 'git', 'push', '--atomic', 'origin', 'main', tag
-        }
-    }
+    commandLine 'git', 'tag', '-a', tag, '-m', body
+}
+
+tasks.register('release', Exec) {
+    def tag = getVersionName()
+    commandLine 'git', 'push', '--atomic', 'origin', 'main', tag
 }
