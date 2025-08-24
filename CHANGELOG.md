@@ -1,3 +1,6 @@
+# v1.1.3
+* Added jitpack.yml
+
 # v1.1.2
 * Another jitpack publication fix
 
