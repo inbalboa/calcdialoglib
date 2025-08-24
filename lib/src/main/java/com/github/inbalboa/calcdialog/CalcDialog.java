@@ -99,11 +99,6 @@ public class CalcDialog extends AppCompatDialogFragment {
         final int operationBtnColor = getColor(ta, R.styleable.CalcDialog_calcOperationBtnColor);
         ta.recycle();
 
-        // Header
-        binding.calcViewHeaderBackground.setBackgroundColor(headerColor);
-        binding.calcViewHeaderElevation.setBackgroundColor(headerElevationColor);
-        binding.calcViewHeaderElevation.setVisibility(View.GONE);
-
         // Erase button
         binding.calcBtnErase.setOnEraseListener(new CalcEraseButton.EraseListener() {
             @Override
@@ -169,6 +164,9 @@ public class CalcDialog extends AppCompatDialogFragment {
         // Set up dialog
         final Dialog dialog = new Dialog(context);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        if (dialog.getWindow() != null) {
+            dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        }
         dialog.setOnShowListener(dialogInterface -> {
             // Get maximum dialog dimensions
             Rect fgPadding = new Rect();

@@ -1,3 +1,6 @@
+# v1.1.6
+* Material 3
+
 # v1.1.5
 * Another jitpack publication fix
 

@@ -112,3 +112,5 @@ fabric.properties
 !/gradle/wrapper/gradle-wrapper.jar
 
 CLAUDE.md
+
+app/

@@ -15,3 +15,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Calc Dialog"
 include ":lib"
+//include ":app"
