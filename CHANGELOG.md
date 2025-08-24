@@ -1,3 +1,6 @@
+# v1.1.5
+* Another jitpack publication fix
+
 # v1.1.4
 * Downgraded Java version to 17
 
