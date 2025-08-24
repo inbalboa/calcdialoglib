@@ -1,3 +1,6 @@
+# v1.1.1
+* Fix jitpack publication
+
 # v1.1.0
 * Upgrade deps & Gradle structure
 
