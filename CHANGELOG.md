@@ -1,3 +1,6 @@
+# v1.1.0
+* Upgrade deps & Gradle structure
+
 # v1.0.7
 * Downgrade SDK version to 19
 
