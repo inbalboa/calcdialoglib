@@ -75,12 +75,14 @@ dependencies {
 
 publishing {
     publications {
-        maven(MavenPublication) {
+        release(MavenPublication) {
             groupId = 'com.github.inbalboa'
-            artifactId = 'calcdialoglib'
+            artifactId = 'calcdialog'
             version = LIB_VERSION
 
-            artifact("$buildDir/outputs/aar/${project.getName()}-release.aar")
+            afterEvaluate {
+                artifact("$buildDir/outputs/aar/${project.getName()}-release.aar")
+            }
         }
     }
 }

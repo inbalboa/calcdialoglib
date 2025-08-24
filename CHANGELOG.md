@@ -1,3 +1,6 @@
+# v1.1.2
+* Another jitpack publication fix
+
 # v1.1.1
 * Fix jitpack publication
 
