@@ -1,5 +1,6 @@
 plugins {
     id 'com.android.library'
+    id 'maven-publish'
 }
 
 def getVersionName() {
@@ -70,6 +71,18 @@ dependencies {
     implementation 'com.google.android.material:material:1.12.0'
 
     testImplementation "junit:junit:4.13.2"
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'com.github.inbalboa'
+            artifactId = 'calcdialoglib'
+            version = LIB_VERSION
+
+            artifact("$buildDir/outputs/aar/${project.getName()}-release.aar")
+        }
+    }
 }
 
 tasks.register('tag', Exec) {
