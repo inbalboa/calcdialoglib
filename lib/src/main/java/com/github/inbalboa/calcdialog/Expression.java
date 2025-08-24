@@ -145,7 +145,7 @@ class Expression implements Parcelable {
         return 0;
     }
 
-    public static final Creator<Expression> CREATOR = new Creator<Expression>() {
+    public static final Creator<Expression> CREATOR = new Creator<>() {
         @Override
         public Expression createFromParcel(Parcel in) {
             return new Expression(in);

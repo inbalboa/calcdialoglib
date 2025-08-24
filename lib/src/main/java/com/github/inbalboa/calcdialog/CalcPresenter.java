@@ -484,9 +484,8 @@ class CalcPresenter {
 
             } else if (currentValueScale == 0
                     && nbFormat.getMinimumFractionDigits() == 0
-                    && nbFormat instanceof DecimalFormat) {
+                    && nbFormat instanceof DecimalFormat fmt) {
                 // Append the decimal separator at the end of the number.
-                DecimalFormat fmt = (DecimalFormat) nbFormat;
                 char sep = fmt.getDecimalFormatSymbols().getDecimalSeparator();
                 if (value.compareTo(BigDecimal.ZERO) >= 0) {
                     String suffixBefore = fmt.getPositiveSuffix();

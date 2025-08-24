@@ -408,7 +408,7 @@ public class CalcSettings implements Parcelable {
         return 0;
     }
 
-    public static final Creator<CalcSettings> CREATOR = new Creator<CalcSettings>() {
+    public static final Creator<CalcSettings> CREATOR = new Creator<>() {
         @Override
         public CalcSettings createFromParcel(Parcel in) {
             return new CalcSettings(in);
