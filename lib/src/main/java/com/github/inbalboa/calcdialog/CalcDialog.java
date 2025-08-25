@@ -29,6 +29,8 @@ import androidx.appcompat.content.res.AppCompatResources;
 import com.github.inbalboa.calcdialog.databinding.DialogCalcBinding;
 
 import java.math.BigDecimal;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Dialog with calculator for entering and calculating a number.
@@ -76,8 +78,6 @@ public class CalcDialog extends AppCompatDialogFragment {
         errorMessages = ta.getTextArray(R.styleable.CalcDialog_calcErrors);
         final int maxDialogWidth = ta.getDimensionPixelSize(R.styleable.CalcDialog_calcDialogMaxWidth, -1);
         final int maxDialogHeight = ta.getDimensionPixelSize(R.styleable.CalcDialog_calcDialogMaxHeight, -1);
-        final int headerColor = getColor(ta, R.styleable.CalcDialog_calcHeaderColor);
-        final int headerElevationColor = getColor(ta, R.styleable.CalcDialog_calcHeaderElevationColor);
         final int separatorColor = getColor(ta, R.styleable.CalcDialog_calcDividerColor);
         final int numberBtnColor = getColor(ta, R.styleable.CalcDialog_calcDigitBtnColor);
         final int operationBtnColor = getColor(ta, R.styleable.CalcDialog_calcOperationBtnColor);
@@ -137,7 +137,8 @@ public class CalcDialog extends AppCompatDialogFragment {
         // Answer button
         binding.calcBtnAnswer.setOnClickListener(v -> presenter.onAnswerBtnClicked());
 
-        // Divider
+//         Divider
+        binding.calcViewHeaderDivider.setBackgroundColor(separatorColor);
         binding.calcViewFooterDivider.setBackgroundColor(separatorColor);
 
         // Dialog buttons
@@ -148,13 +149,12 @@ public class CalcDialog extends AppCompatDialogFragment {
         // Set up dialog
         final Dialog dialog = new Dialog(context);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        if (dialog.getWindow() != null) {
-            dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-        }
+        Window window = Objects.requireNonNull(dialog.getWindow());
+        window.setBackgroundDrawableResource(android.R.color.transparent);
         dialog.setOnShowListener(dialogInterface -> {
             // Get maximum dialog dimensions
             Rect fgPadding = new Rect();
-            dialog.getWindow().getDecorView().getBackground().getPadding(fgPadding);
+            window.getDecorView().getBackground().getPadding(fgPadding);
             DisplayMetrics metrics = Resources.getSystem().getDisplayMetrics();
             int height = metrics.heightPixels - fgPadding.top - fgPadding.bottom;
             int width = metrics.widthPixels - fgPadding.top - fgPadding.bottom;
@@ -162,7 +162,7 @@ public class CalcDialog extends AppCompatDialogFragment {
             // Set dialog's dimensions
             if (width > maxDialogWidth) width = maxDialogWidth;
             if (height > maxDialogHeight) height = maxDialogHeight;
-            dialog.getWindow().setLayout(width, height);
+            window.setLayout(width, height);
 
             // Set dialog's content
             View view = binding.getRoot();
@@ -278,7 +278,9 @@ public class CalcDialog extends AppCompatDialogFragment {
         });
 
         if (state != null) {
-            settings = state.getParcelable("settings");
+            settings = Optional.ofNullable(state.getParcelable("settings"))
+                    .map(CalcSettings.class::cast)
+                    .orElse(new CalcSettings());
         }
 
         return dialog;
@@ -318,9 +320,9 @@ public class CalcDialog extends AppCompatDialogFragment {
         super.onDetach();
         if (presenter != null) {
             presenter.detach();
+            presenter = null;
         }
 
-        presenter = null;
         context = null;
     }
 
@@ -330,12 +332,6 @@ public class CalcDialog extends AppCompatDialogFragment {
         if (getParentFragment() != null) {
             try {
                 cb = (CalcDialogCallback) getParentFragment();
-            } catch (Exception e) {
-                // Interface callback is not implemented in fragment
-            }
-        } else if (getTargetFragment() != null) {
-            try {
-                cb = (CalcDialogCallback) getTargetFragment();
             } catch (Exception e) {
                 // Interface callback is not implemented in fragment
             }
@@ -366,6 +362,12 @@ public class CalcDialog extends AppCompatDialogFragment {
         CalcDialogCallback cb = getCallback();
         if (cb != null) {
             cb.onValueEntered(settings.requestCode, value);
+        } else {
+            // Use Fragment Result API as fallback
+            Bundle result = new Bundle();
+            result.putSerializable("value", value);
+            result.putInt("requestCode", settings.requestCode);
+            getParentFragmentManager().setFragmentResult("calc_dialog_result", result);
         }
     }
 

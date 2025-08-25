@@ -12,6 +12,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.util.Optional;
 
 /**
  * Settings for the calculator dialog.
@@ -294,7 +295,9 @@ public class CalcSettings implements Parcelable {
         if (bundle != null) {
             nbFormat = getNumberFormatFromBundle(bundle);
             requestCode = bundle.getInt("requestCode");
-            numpadLayout = (CalcNumpadLayout) bundle.getSerializable("numpadLayout");
+            numpadLayout = Optional.ofNullable(bundle.getSerializable("numpadLayout"))
+                    .map(CalcNumpadLayout.class::cast)
+                    .orElse(CalcNumpadLayout.CALCULATOR);
             isExpressionShown = bundle.getBoolean("isExpressionShown");
             isZeroShownWhenNoValue = bundle.getBoolean("isZeroShownWhenNoValue");
             isAnswerBtnShown = bundle.getBoolean("isAnswerBtnShown");

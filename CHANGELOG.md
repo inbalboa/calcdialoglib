@@ -1,3 +1,6 @@
+# v1.1.7
+* Minor code cleanup
+
 # v1.1.6
 * Material 3
 

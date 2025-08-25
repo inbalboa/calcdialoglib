@@ -334,7 +334,9 @@ class CalcPresenter {
         }
 
         if (errorCode == ERROR_NONE) {
-            view.sendValueResult(resultValue);
+            if (resultValue != null) {
+                view.sendValueResult(resultValue);
+            }
             view.exit();
         }
     }

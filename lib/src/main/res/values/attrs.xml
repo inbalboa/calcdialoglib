@@ -5,6 +5,9 @@
 
     <declare-styleable name="CalcDialog">
 
+        <!-- Corners radius for the calculator dialog. -->
+        <attr name="calcDialogCornersRadius" format="dimension"/>
+
         <!-- Maximum width for the calculator dialog. The dialog will expand to that width. -->
         <attr name="calcDialogMaxWidth" format="dimension"/>
 
@@ -29,12 +32,6 @@
 
         <!-- Background color for the dialog header. -->
         <attr name="calcHeaderColor" format="color|reference"/>
-
-        <!-- Header elevation size. -->
-        <attr name="calcHeaderElevation" format="dimension|reference"/>
-
-        <!-- Header elevation color used for API < 21. -->
-        <attr name="calcHeaderElevationColor" format="color|reference"/>
 
         <!-- Style for the value TextView. -->
         <attr name="calcValueStyle" format="reference"/>
